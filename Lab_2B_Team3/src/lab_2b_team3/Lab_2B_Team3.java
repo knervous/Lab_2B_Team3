@@ -15,7 +15,7 @@ public class Lab_2B_Team3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("test 1234");
+        System.out.println("test 12345");
     }
     
 }
