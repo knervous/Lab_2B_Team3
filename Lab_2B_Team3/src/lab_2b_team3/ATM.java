@@ -21,7 +21,7 @@ public class ATM {
         this.checkingList = checkingList;
         this.savingList = savingList;
         this.commercialList = commercialList;
-        
+        //
     }
     
     public void accessMenu()
