@@ -216,7 +216,7 @@ public class ATM {
         
     }
     
-    public String makeWithdrawal(PersonalChecking pc, PersonalSaving ps, Commercial c)
+    public void makeWithdrawal(PersonalChecking pc, PersonalSaving ps, Commercial c)
     {
         int withdrawalAmount=0;
         System.out.println("");
@@ -244,7 +244,9 @@ public class ATM {
             c.setBalance(withdrawalAmount);
         }
         
+        Currency currency = new Currency();
         System.out.println("The amount of $"+withdrawalAmount+" was withdrawn from your account.");
+        System.out.println("The ATM hands you "+currency.getBills(withdrawalAmount));
         
         try {
             System.out.println("Press enter to continue...");
@@ -255,7 +257,7 @@ public class ATM {
         }
         
         
-        return null;
+        
     }
     
     public void makeDeposit(PersonalChecking pc, PersonalSaving ps, Commercial c)
