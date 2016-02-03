@@ -75,7 +75,7 @@ public class Bank {
         System.out.println("Enter a 4 Digit PIN");
         try{
             pin = in.nextInt();
-            if(!(pin>999&&pin<10000))
+            if(!(pin>999&&pin<10000||pin==0000))
             {
                 System.out.println("Not four digits! Let's start over");
                 createChecking();
