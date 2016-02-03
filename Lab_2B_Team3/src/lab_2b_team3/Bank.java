@@ -5,6 +5,8 @@
  */
 package lab_2b_team3;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -65,7 +67,10 @@ public class Bank {
     
     public void createChecking()
     { 
-        String first=""; String last=""; String date=""; int pin=1234;
+        String first=""; String last=""; String date="";
+        String pin="";
+        int pinInt=0;
+        
         System.out.println("Enter your first name: ");
         first = in.next();
         System.out.println("Enter your last name: ");
@@ -74,11 +79,20 @@ public class Bank {
         date = in.next();
         System.out.println("Enter a 4 Digit PIN");
         try{
-            pin = in.nextInt();
-            if(!(pin>999&&pin<10000||pin==0000))
+            pin = "";
+            pin = in.next();
+            pinInt = Integer.parseInt(pin);
+            if(!(pinInt>-1&&pinInt<10000)||!(pin.length()==4))
             {
                 System.out.println("Not four digits! Let's start over");
                 createChecking();
+            }
+            else{
+                checking.add(new PersonalChecking(first,last,date,pinInt));
+                System.out.println("Account Created! ");
+                System.out.println("Please write down your account information: ");
+                System.out.println("Account number is: "+checking.get(checking.size()-1).getAccountNumber());
+                System.out.println("PIN is: "+pinInt);
             }
         }
         catch(Exception e)
@@ -86,17 +100,18 @@ public class Bank {
             System.out.println("Bad PIN entered! Let's start over");
             createChecking();
         }
-        checking.add(new PersonalChecking(first,last,date,pin));
-        System.out.println("Account Created! ");
-        System.out.println("Please write down your account information: ");
-        System.out.println("Account number is: "+checking.get(checking.size()-1).getAccountNumber());
-        System.out.println("PIN is: "+pin);
+        
         
     }
     
     public void createSaving()
     {
-        String first=""; String last=""; String date=""; int pin=1234;
+       
+        String first=""; String last=""; String date=""; 
+        
+        String pin="";
+        int pinInt=0;
+        
         System.out.println("Enter your first name: ");
         first = in.next();
         System.out.println("Enter your last name: ");
@@ -104,50 +119,70 @@ public class Bank {
         System.out.println("Enter your date of birth: ");
         date = in.next();
         System.out.println("Enter a 4 Digit PIN");
+        
         try{
-            pin = in.nextInt();
-            if(!(pin>999&&pin<10000))
+            
+            
+            pin = in.next();
+            pinInt = Integer.parseInt(pin);
+            if(!(pinInt>-1&&pinInt<10000)||!(pin.length()==4))
             {
                 System.out.println("Not four digits! Let's start over");
-                createChecking();
+                createSaving();
             }
+            else
+            {
+                saving.add(new PersonalSaving(first,last,date,pinInt));
+                System.out.println("Account Created! ");
+                System.out.println("Please write down your account information: ");
+                System.out.println("Account number is: "+saving.get(saving.size()-1).getAccountNumber());
+                System.out.println("PIN is: "+pinInt);
+            }
+            
         }
         catch(Exception e)
         {
             System.out.println("Bad PIN entered! Let's start over");
-            createChecking();
+            createSaving();
         }
-        saving.add(new PersonalSaving(first,last,date,pin));
-        System.out.println("Account Created! ");
-        System.out.println("Please write down your account information: ");
-        System.out.println("Account number is: "+saving.get(saving.size()-1).getAccountNumber());
-        System.out.println("PIN is: "+pin);
+        
     }
     
     public void createCommercial()
     {
         String name;
-        int pin=1234;
+        String pin="";
+        int pinInt=0;
+        
+        
+        
+        
         System.out.println("Enter your business name: ");
         name = in.next();
         System.out.println("Enter a 4 Digit PIN");
         try{
-            pin = in.nextInt();
-            if(!(pin>999&&pin<10000))
+            
+            
+            pin = in.next();
+            pinInt = Integer.parseInt(pin);
+            if(!(pinInt>999&&pinInt<10000)||!(pin.length()==4))
             {
                 System.out.println("Not four digits! Let's start over");
-                createChecking();
+                createCommercial();
+            }
+            else{
+                commercial.add(new Commercial(name,pinInt));
+                System.out.println("Account Created! ");
+                System.out.println("Please write down your account information: ");
+                System.out.println("Account number is: "+commercial.get(commercial.size()-1).getAccountNumber());
+                System.out.println("PIN is: "+pinInt);
             }
         }
         catch(Exception e)
         {
             System.out.println("Bad PIN entered! Let's start over");
-            createChecking();
+            createCommercial();
         }
-        commercial.add(new Commercial(name,pin));
-        System.out.println("Account Created! ");
-        System.out.println("Please write down your account information: ");
-        System.out.println("Account number is: "+commercial.get(commercial.size()-1).getAccountNumber());
-        System.out.println("PIN is: "+pin);
+  
     }
 }
