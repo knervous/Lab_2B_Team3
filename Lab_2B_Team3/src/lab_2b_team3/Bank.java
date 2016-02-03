@@ -102,7 +102,7 @@ public class Bank {
         System.out.println("Enter your last name: ");
         last = in.next();
         System.out.println("Enter your date of birth: ");
-        date = in.nextLine();
+        date = in.next();
         System.out.println("Enter a 4 Digit PIN");
         try{
             pin = in.nextInt();
