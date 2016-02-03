@@ -2,30 +2,35 @@
 package lab_2b_team3;
 
 
-public class Commercial extends BankAccount
-
-
-    {
+public class PersonalChecking extends BankAccount{
     
-    private String businessName;
+
+    private String firstName = "";
+    private String lastName = "";
+    private String dateOfBirth;
     
-    public Commercial(String businessName, int pin)
+    public PersonalChecking(String firstName, String lastName, String dateOfBirth, int pin)
     {
         super(pin);
-        this.businessName = businessName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
     }
     
-    
-
     public void setBalance(int changeAmount) {
         balance = balance - changeAmount;
     }
     
-    public String getBusinessName()
+    public String getFirstName()
     {
-        return businessName;
+        return firstName;
     }
-
+    
+    public String getLastName()
+    {
+        return lastName;
+    }
+    
     @Override
     public int getAccountNumber() {
         return accountNumber;
@@ -40,7 +45,7 @@ public class Commercial extends BankAccount
     public String getJoinDate() {
         return joinDate;
     }
-
+    
     @Override
     public int getPin() {
         return pin;
@@ -48,12 +53,14 @@ public class Commercial extends BankAccount
     
     @Override
     public void displayInfo() {
-        System.out.println("Name of business: "+businessName);
+        System.out.println("Name of account holder: "+firstName+" "+lastName);
         System.out.println("Date of account creation: "+joinDate);
+        System.out.println("Date of birth: "+dateOfBirth);
         System.out.println("Account Number: "+accountNumber);
-        System.out.println("Account Type: Commercial");
+        System.out.println("Account Type: Personal Checking");
         System.out.println("");
     }
-    
+
+
     
 }
